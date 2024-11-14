@@ -1,13 +1,46 @@
 ///File download from FlutterViz- Drag and drop a tools. For more details visit https://flutterviz.io/
 library;
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/pantallas/homescreen.dart';
+import 'package:myapp/pantallas/CrearCuenta.dart';
+import 'package:myapp/pantallas/HomeScreen.dart';
 
 class Login extends StatelessWidget {
-  const Login({super.key});
+  Login({super.key});
 
-  
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  Future<void> _login(BuildContext context) async {
+    try {
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomeScreen()),
+      );
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text("Error"),
+          content: Text(e.toString()),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("OK"),
+            ),
+          ],
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +93,7 @@ class Login extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
                       child: Text(
-                        "Login to Continue",
+                        "Ingresa a tu cuenta para continuar",
                         textAlign: TextAlign.start,
                         overflow: TextOverflow.clip,
                         style: TextStyle(
@@ -88,8 +121,8 @@ class Login extends StatelessWidget {
                       ),
                     ),
                     TextField(
-                      controller:
-                          TextEditingController(text: "example@gmail.com"),
+                      controller: emailController,
+                      autofocus: false,
                       obscureText: false,
                       textAlign: TextAlign.start,
                       maxLines: 1,
@@ -102,18 +135,18 @@ class Login extends StatelessWidget {
                       decoration: InputDecoration(
                         disabledBorder: UnderlineInputBorder(
                           borderRadius: BorderRadius.circular(4.0),
-                          borderSide:
-                              const BorderSide(color: Color(0xff000000), width: 1),
+                          borderSide: const BorderSide(
+                              color: Color(0xff000000), width: 1),
                         ),
                         focusedBorder: UnderlineInputBorder(
                           borderRadius: BorderRadius.circular(4.0),
-                          borderSide:
-                              const BorderSide(color: Color(0xff000000), width: 1),
+                          borderSide: const BorderSide(
+                              color: Color(0xff000000), width: 1),
                         ),
                         enabledBorder: UnderlineInputBorder(
                           borderRadius: BorderRadius.circular(4.0),
-                          borderSide:
-                              const BorderSide(color: Color(0xff000000), width: 1),
+                          borderSide: const BorderSide(
+                              color: Color(0xff000000), width: 1),
                         ),
                         labelText: "Email",
                         labelStyle: const TextStyle(
@@ -122,12 +155,12 @@ class Login extends StatelessWidget {
                           fontSize: 16,
                           color: Color(0xff7c7878),
                         ),
-                        hintText: "Enter Text",
+                        hintText: "ejemplo@mail.com",
                         hintStyle: const TextStyle(
                           fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.normal,
                           fontSize: 14,
-                          color: Color(0xff000000),
+                          color: Color(0xff7c7878),
                         ),
                         filled: true,
                         fillColor: const Color(0x00ffffff),
@@ -136,10 +169,11 @@ class Login extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsets.symmetric(vertical: 16, horizontal: 0),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 16, horizontal: 0),
                       child: TextField(
-                        controller: TextEditingController(text: "123456"),
+                        autofocus: false,
+                        controller: passwordController,
                         obscureText: true,
                         textAlign: TextAlign.start,
                         maxLines: 1,
@@ -152,32 +186,32 @@ class Login extends StatelessWidget {
                         decoration: InputDecoration(
                           disabledBorder: UnderlineInputBorder(
                             borderRadius: BorderRadius.circular(4.0),
-                            borderSide:
-                                const BorderSide(color: Color(0xff000000), width: 1),
+                            borderSide: const BorderSide(
+                                color: Color(0xff000000), width: 1),
                           ),
                           focusedBorder: UnderlineInputBorder(
                             borderRadius: BorderRadius.circular(4.0),
-                            borderSide:
-                                const BorderSide(color: Color(0xff000000), width: 1),
+                            borderSide: const BorderSide(
+                                color: Color(0xff000000), width: 1),
                           ),
                           enabledBorder: UnderlineInputBorder(
                             borderRadius: BorderRadius.circular(4.0),
-                            borderSide:
-                                const BorderSide(color: Color(0xff000000), width: 1),
+                            borderSide: const BorderSide(
+                                color: Color(0xff000000), width: 1),
                           ),
-                          labelText: "Password",
+                          labelText: "Contraseña",
                           labelStyle: const TextStyle(
                             fontWeight: FontWeight.w400,
                             fontStyle: FontStyle.normal,
                             fontSize: 16,
                             color: Color(0xff7c7878),
                           ),
-                          hintText: "Enter Text",
+                          hintText: "********",
                           hintStyle: const TextStyle(
                             fontWeight: FontWeight.w400,
                             fontStyle: FontStyle.normal,
                             fontSize: 14,
-                            color: Color(0xff000000),
+                            color: Color(0xff7c7878),
                           ),
                           filled: true,
                           fillColor: const Color(0x00ffffff),
@@ -191,7 +225,7 @@ class Login extends StatelessWidget {
                     const Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "Forgot Password?",
+                        "¿Olvidaste tu contraseña?",
                         textAlign: TextAlign.start,
                         overflow: TextOverflow.clip,
                         style: TextStyle(
@@ -205,12 +239,9 @@ class Login extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 30, 0, 50),
                       child: MaterialButton(
-                         onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => homescreen()),
-                            );
-                          },
+                        onPressed: () {
+                          _login(context);
+                        },
                         color: const Color(0xff3a57e8),
                         elevation: 0,
                         shape: RoundedRectangleBorder(
@@ -221,7 +252,7 @@ class Login extends StatelessWidget {
                         height: 50,
                         minWidth: MediaQuery.of(context).size.width,
                         child: const Text(
-                          "Comenzar",
+                          "Iniciar Sesión",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
@@ -232,11 +263,12 @@ class Login extends StatelessWidget {
                     ),
                     MaterialButton(
                       onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => homescreen()),
-                            );
-                          },
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CrearCuenta()),
+                        );
+                      },
                       color: const Color(0x2d3a57e8),
                       elevation: 0,
                       shape: RoundedRectangleBorder(

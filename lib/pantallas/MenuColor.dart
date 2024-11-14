@@ -1,13 +1,40 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp/pantallas/FinalScreen7.dart';
-import 'package:myapp/pantallas/menu_diseno2.dart';
-import 'package:myapp/pantallas/menu_diseno3.dart';
-import 'package:myapp/pantallas/menu_diseno4.dart';
-import 'package:myapp/pantallas/menu_diseno5.dart';
-import 'package:myapp/pantallas/menu_diseno6.dart';
+import 'package:myapp/pantallas/ComprasUsuario.dart';
+import 'package:myapp/pantallas/FinalScreen.dart';
+import 'package:myapp/pantallas/HomeScreen.dart';
 
-class menu_diseno1 extends StatelessWidget {
-  const menu_diseno1({super.key});
+class MenuColor extends StatefulWidget {
+  @override
+  State<MenuColor> createState() => _MenuColorState();
+}
+
+class _MenuColorState extends State<MenuColor> {
+  Map<String, dynamic> _shoe = {
+    'image': '',
+    'color': '',
+    'price': 0,
+  };
+
+  final _email = FirebaseAuth.instance.currentUser?.email;
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _shoe['image'] = "images/nomark_mokup1.png";
+      _shoe['color'] = "Blanco";
+      _shoe['price'] = 80000;
+    });
+  }
+
+  void _setShoe(String image, color, int price) {
+    setState(() {
+      _shoe['image'] = image;
+      _shoe['color'] = color;
+      _shoe['price'] = price;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +44,7 @@ class menu_diseno1 extends StatelessWidget {
         elevation: 0,
         centerTitle: false,
         automaticallyImplyLeading: false,
-        backgroundColor: const Color(0xffffffff),
+        backgroundColor: const Color(0xfff6f6f6),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.zero,
         ),
@@ -30,17 +57,49 @@ class menu_diseno1 extends StatelessWidget {
             color: Color(0xff000000),
           ),
         ),
-        leading: const Icon(
-          Icons.menu,
-          color: Color(0xff212435),
-          size: 24,
-        ),
-        actions: const [
-          Icon(Icons.favorite_border, color: Color(0xff212435), size: 24),
+        leading: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              padding: EdgeInsets.all(0),
+              backgroundColor: const Color(0xfff6f6f6),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.zero,
+              ),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomeScreen()),
+              );
+            },
+            child: Center(
+                child: Icon(
+              Icons.home,
+              color: Color(0xff212435),
+              size: 24,
+            ))),
+        actions: [
+          const Icon(Icons.favorite_border, color: Color(0xff212435), size: 24),
           Padding(
-            padding: EdgeInsets.fromLTRB(8, 0, 16, 0),
-            child: Icon(Icons.shopping_cart, color: Color(0xff212435), size: 24),
-          ),
+              padding: const EdgeInsets.fromLTRB(8, 0, 16, 0),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.all(0),
+                    backgroundColor: const Color(0xfff6f6f6),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ComprasUsuario(email: _email)),
+                    );
+                  },
+                  child: Center(
+                    child: Icon(Icons.shopping_cart,
+                        color: Color(0xff212435), size: 24),
+                  ))),
         ],
       ),
       body: Padding(
@@ -56,7 +115,7 @@ class menu_diseno1 extends StatelessWidget {
                 margin: const EdgeInsets.all(0),
                 padding: const EdgeInsets.all(0),
                 width: MediaQuery.of(context).size.width,
-                height: 200, 
+                height: 200,
                 decoration: BoxDecoration(
                   color: const Color(0x1fffffff),
                   shape: BoxShape.rectangle,
@@ -66,10 +125,10 @@ class menu_diseno1 extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                   child: Image(
-                    image: const AssetImage("images/nomark_mokup-2.png"),
+                    image: AssetImage(_shoe['image']),
                     height: 200,
                     width: MediaQuery.of(context).size.width,
-                    fit: BoxFit.contain, 
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),
@@ -88,7 +147,8 @@ class menu_diseno1 extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -97,15 +157,12 @@ class menu_diseno1 extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
                       child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => const menu_diseno1()),
-                          );
-                        },
+                        onTap: () => _setShoe(
+                            "images/nomark_color1.png", 'rojo', 100000),
                         child: const Image(
-                          image: AssetImage("images/01.png"),
-                          height: 80,  
-                          width: 80,   
+                          image: AssetImage("images/Ellipse8.png"),
+                          height: 80,
+                          width: 80,
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -113,15 +170,12 @@ class menu_diseno1 extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
                       child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => const menu_diseno2()),
-                          );
-                        },
+                        onTap: () => _setShoe(
+                            "images/nomark_color2.png", 'amarillo', 120000),
                         child: const Image(
-                          image: AssetImage("images/02.png"),
-                          height: 80,  
-                          width: 80,   
+                          image: AssetImage("images/Ellipse9.png"),
+                          height: 80,
+                          width: 80,
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -129,15 +183,12 @@ class menu_diseno1 extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
                       child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => const menu_diseno3()),
-                          );
-                        },
+                        onTap: () => _setShoe(
+                            "images/nomark_color3.png", 'verde', 150000),
                         child: const Image(
-                          image: AssetImage("images/03.png"),
-                          height: 80,  
-                          width: 80,   
+                          image: AssetImage("images/Ellipse10.png"),
+                          height: 80,
+                          width: 80,
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -146,24 +197,22 @@ class menu_diseno1 extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 30),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 0, horizontal: 30),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center, 
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
                       child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => const menu_diseno4()),
-                          );
-                        },
+                        onTap: () => _setShoe(
+                            "images/nomark_color4.png", 'azul', 120000),
                         child: const Image(
-                          image: AssetImage("images/04.png"),
-                          height: 80,  
-                          width: 80,   
+                          image: AssetImage("images/Ellipse11.png"),
+                          height: 80,
+                          width: 80,
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -171,15 +220,12 @@ class menu_diseno1 extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
                       child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => const menu_diseno5()),
-                          );
-                        },
+                        onTap: () => _setShoe(
+                            "images/nomark_color5.png", 'morado', 220000),
                         child: const Image(
-                          image: AssetImage("images/05.png"),
-                          height: 80,  
-                          width: 80,   
+                          image: AssetImage("images/Ellipse12.png"),
+                          height: 80,
+                          width: 80,
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -187,15 +233,12 @@ class menu_diseno1 extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
                       child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => const menu_diseno6()),
-                          );
-                        },
+                        onTap: () => _setShoe(
+                            "images/nomark_color6.png", 'magenta', 180000),
                         child: const Image(
-                          image: AssetImage("images/06.png"),
-                          height: 80,  
-                          width: 80,   
+                          image: AssetImage("images/Ellipse13.png"),
+                          height: 80,
+                          width: 80,
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -205,18 +248,19 @@ class menu_diseno1 extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                child:  Center(
+                child: Center(
                   child: InkWell(
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const FinalScreen7()),
+                        MaterialPageRoute(
+                            builder: (context) => FinalScreen(shoe: _shoe)),
                       );
                     },
                     child: const Image(
                       image: AssetImage("images/bt_continuar.png"),
-                      height: 100,  // Ajusté el tamaño de altura
-                      width: 200,   // Ajusté el tamaño de ancho
+                      height: 100, // Ajusté el tamaño de altura
+                      width: 200, // Ajusté el tamaño de ancho
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -229,4 +273,3 @@ class menu_diseno1 extends StatelessWidget {
     );
   }
 }
-
