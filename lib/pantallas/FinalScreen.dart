@@ -17,7 +17,7 @@ Future<void> _launchDeepLinkURL(
     BuildContext context, Map<String, dynamic> shoe) async {
   final theme = Theme.of(context);
   const String BASE_URL =
-      'https://3000-idx-api-rest-no-mark-1729718476949.cluster-fnjdffmttjhy2qqdugh3yehhs2.cloudworkstations.dev';
+      'https://no-mark-api.azurewebsites.net';
   Response responsePayment, responseShop;
   responsePayment = await dio.post('${BASE_URL}/payment', data: {
     'items': [

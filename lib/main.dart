@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
         );
       },
       home: const Splash(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

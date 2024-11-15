@@ -9,7 +9,7 @@ final dio = Dio();
 
 Future<List<dynamic>> getDataUser(String email) async {
   const String BASE_URL =
-      'https://3000-idx-api-rest-no-mark-1729718476949.cluster-fnjdffmttjhy2qqdugh3yehhs2.cloudworkstations.dev';
+      'https://no-mark-api.azurewebsites.net';
   Response response;
   response = await dio.get('${BASE_URL}/shops', data: {
     'userEmail': email,
