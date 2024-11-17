@@ -252,8 +252,8 @@ class _MenuColorState extends State<MenuColor> {
                     },
                     child: const Image(
                       image: AssetImage("images/bt_continuar.png"),
-                      height: 100, // Ajusté el tamaño de altura
-                      width: 200, // Ajusté el tamaño de ancho
+                      height: 300 / 2, // Ajusté el tamaño de altura
+                      width: 300, // Ajusté el tamaño de ancho
                       fit: BoxFit.contain,
                     ),
                   ),

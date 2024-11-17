@@ -125,7 +125,7 @@ class CrearCuenta extends StatelessWidget {
                       textAlign: TextAlign.start,
                       maxLines: 1,
                       style: const TextStyle(
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w400,
                         fontStyle: FontStyle.normal,
                         fontSize: 18,
                         color: Color(0xff000000),
@@ -148,7 +148,7 @@ class CrearCuenta extends StatelessWidget {
                         ),
                         labelText: "Email",
                         labelStyle: const TextStyle(
-                          fontWeight: FontWeight.w400,
+                          fontWeight: FontWeight.w600,
                           fontStyle: FontStyle.normal,
                           fontSize: 18,
                           color: Color(0xff7c7878),
@@ -177,7 +177,7 @@ class CrearCuenta extends StatelessWidget {
                         textAlign: TextAlign.start,
                         maxLines: 1,
                         style: const TextStyle(
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.normal,
                           fontSize: 18,
                           color: Color(0xff000000),
@@ -200,7 +200,7 @@ class CrearCuenta extends StatelessWidget {
                           ),
                           labelText: "Contraseña",
                           labelStyle: const TextStyle(
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w600,
                             fontStyle: FontStyle.normal,
                             fontSize: 18,
                             color: Color(0xff7c7878),

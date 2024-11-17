@@ -193,65 +193,20 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: 150,
-                      width: MediaQuery.of(context).size.width,
-                      child: Stack(
-                        children: [
-                          PageView.builder(
-                            controller: pageController,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 3,
-                            itemBuilder: (context, position) {
-                              return Align(
-                                alignment: Alignment.topCenter,
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 0, 0, 15),
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => MenuCrudos()),
-                                      );
-                                    },
-                                    child: Image(
-                                      image: const AssetImage(
-                                          "images/descuento.png"),
-                                      height: 180,
-                                      width: MediaQuery.of(context).size.width,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                              child: SmoothPageIndicator(
-                                controller: pageController,
-                                count: 1,
-                                axisDirection: Axis.horizontal,
-                                effect: const WormEffect(
-                                  dotColor: Color(0xff9e9e9e),
-                                  activeDotColor: Color(0xff3a57e8),
-                                  dotHeight: 0,
-                                  dotWidth: 0,
-                                  radius: 0,
-                                  spacing: 0,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MenuCrudos()),
+                        );
+                      },
+                      child: Image(
+                        image: const AssetImage("images/descuento.png"),
+                        height: 180,
+                        width: MediaQuery.of(context).size.width,
+                        fit: BoxFit.contain,
                       ),
                     ),
-
-                    ///***If you have exported images you must have to copy those images in assets/images directory.
                     InkWell(
                       onTap: () {
                         Navigator.push(
@@ -264,78 +219,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 180,
                         width: MediaQuery.of(context).size.width,
                         fit: BoxFit.contain,
-                      ),
-                    ),
-
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.3,
-                      width: MediaQuery.of(context).size.width,
-                      child: Stack(
-                        alignment: Alignment.topLeft,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
-                            child:
-
-                                ///***If you have exported images you must have to copy those images in assets/images directory.
-                                Image(
-                              image:
-                                  const AssetImage("images/nomark_shoes2-.jpg"),
-                              height: MediaQuery.of(context).size.height * 0.3,
-                              width: MediaQuery.of(context).size.width,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Align(
-                            alignment: const Alignment(0.0, 0.9),
-                            child: Container(
-                              margin: const EdgeInsets.symmetric(
-                                  vertical: 0, horizontal: 16),
-                              padding: const EdgeInsets.all(0),
-                              width: MediaQuery.of(context).size.width,
-                              height: 45,
-                              decoration: BoxDecoration(
-                                color: const Color(0xffffffff),
-                                shape: BoxShape.rectangle,
-                                borderRadius: BorderRadius.zero,
-                                border: Border.all(
-                                    color: const Color(0x4d9e9e9e), width: 1),
-                              ),
-                              child: const Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Text(
-                                    "Personalizados 15% de descuento",
-                                    textAlign: TextAlign.start,
-                                    overflow: TextOverflow.clip,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontStyle: FontStyle.normal,
-                                      fontSize: 14,
-                                      color: Color(0xff3a57e8),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
-                                    child: Text(
-                                      "Recuerda que la marca eres tu!!!",
-                                      textAlign: TextAlign.start,
-                                      overflow: TextOverflow.clip,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontStyle: FontStyle.normal,
-                                        fontSize: 12,
-                                        color: Color(0xff000000),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
                       ),
                     ),
                   ],
