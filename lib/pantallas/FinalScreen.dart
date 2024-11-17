@@ -16,8 +16,7 @@ final user = FirebaseAuth.instance.currentUser;
 Future<void> _launchDeepLinkURL(
     BuildContext context, Map<String, dynamic> shoe) async {
   final theme = Theme.of(context);
-  const String BASE_URL =
-      'https://no-mark-api.azurewebsites.net';
+  const String BASE_URL = 'https://no-mark-api.azurewebsites.net';
   Response responsePayment, responseShop;
   responsePayment = await dio.post('${BASE_URL}/payment', data: {
     'items': [
@@ -76,9 +75,9 @@ class FinalScreen extends StatelessWidget {
         title: const Text(
           "No Mark app",
           style: TextStyle(
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
-            fontSize: 18,
+            fontSize: 20,
             color: Color(0xff000000),
           ),
         ),
@@ -91,10 +90,8 @@ class FinalScreen extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
-              );
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()));
             },
             child: Center(
                 child: Icon(
@@ -103,7 +100,6 @@ class FinalScreen extends StatelessWidget {
               size: 24,
             ))),
         actions: [
-          const Icon(Icons.favorite_border, color: Color(0xff212435), size: 24),
           Padding(
               padding: const EdgeInsets.fromLTRB(8, 0, 16, 0),
               child: ElevatedButton(

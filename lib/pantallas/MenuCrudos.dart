@@ -24,9 +24,9 @@ class MenuCrudos extends StatelessWidget {
         title: const Text(
           "No Mark app",
           style: TextStyle(
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
-            fontSize: 18,
+            fontSize: 20,
             color: Color(0xff000000),
           ),
         ),
@@ -39,10 +39,8 @@ class MenuCrudos extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
-              );
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()));
             },
             child: Center(
                 child: Icon(
@@ -51,7 +49,6 @@ class MenuCrudos extends StatelessWidget {
               size: 24,
             ))),
         actions: [
-          const Icon(Icons.favorite_border, color: Color(0xff212435), size: 24),
           Padding(
               padding: const EdgeInsets.fromLTRB(8, 0, 16, 0),
               child: ElevatedButton(
@@ -83,8 +80,10 @@ class MenuCrudos extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.max,
             children: [
-              const Padding(
-                padding: EdgeInsets.all(20),
+              Container(
+                alignment: Alignment.center,
+                margin: const EdgeInsets.all(0),
+                padding: const EdgeInsets.all(0),
                 child: Text(
                   "Escoge tu Crudo favorito",
                   textAlign: TextAlign.center,
@@ -92,7 +91,7 @@ class MenuCrudos extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontStyle: FontStyle.normal,
-                    fontSize: 20,
+                    fontSize: 28,
                     color: Color(0xff000000),
                   ),
                 ),

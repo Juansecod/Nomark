@@ -85,7 +85,7 @@ class CrearCuenta extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontStyle: FontStyle.normal,
-                        fontSize: 22,
+                        fontSize: 24,
                         color: Color(0xff000000),
                       ),
                     ),
@@ -98,7 +98,7 @@ class CrearCuenta extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.normal,
-                          fontSize: 18,
+                          fontSize: 22,
                           color: Color(0xffa29b9b),
                         ),
                       ),
@@ -127,7 +127,7 @@ class CrearCuenta extends StatelessWidget {
                       style: const TextStyle(
                         fontWeight: FontWeight.w700,
                         fontStyle: FontStyle.normal,
-                        fontSize: 14,
+                        fontSize: 18,
                         color: Color(0xff000000),
                       ),
                       decoration: InputDecoration(
@@ -150,20 +150,22 @@ class CrearCuenta extends StatelessWidget {
                         labelStyle: const TextStyle(
                           fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.normal,
-                          fontSize: 16,
+                          fontSize: 18,
                           color: Color(0xff7c7878),
                         ),
                         hintText: "ejemplo@mail.com",
                         hintStyle: const TextStyle(
                           fontWeight: FontWeight.w400,
                           fontStyle: FontStyle.normal,
-                          fontSize: 14,
+                          fontSize: 18,
                           color: Color(0xff7c7878),
                         ),
                         filled: true,
                         fillColor: const Color(0x00ffffff),
                         isDense: false,
                         contentPadding: const EdgeInsets.all(0),
+                        suffixIcon: const Icon(Icons.email,
+                            color: Color(0xff7b7c82), size: 24),
                       ),
                     ),
                     Padding(
@@ -177,7 +179,7 @@ class CrearCuenta extends StatelessWidget {
                         style: const TextStyle(
                           fontWeight: FontWeight.w700,
                           fontStyle: FontStyle.normal,
-                          fontSize: 14,
+                          fontSize: 18,
                           color: Color(0xff000000),
                         ),
                         decoration: InputDecoration(
@@ -196,25 +198,25 @@ class CrearCuenta extends StatelessWidget {
                             borderSide: const BorderSide(
                                 color: Color(0xff000000), width: 1),
                           ),
-                          labelText: "Password",
+                          labelText: "Contraseña",
                           labelStyle: const TextStyle(
                             fontWeight: FontWeight.w400,
                             fontStyle: FontStyle.normal,
-                            fontSize: 16,
+                            fontSize: 18,
                             color: Color(0xff7c7878),
                           ),
                           hintText: "********",
                           hintStyle: const TextStyle(
                             fontWeight: FontWeight.w400,
                             fontStyle: FontStyle.normal,
-                            fontSize: 14,
+                            fontSize: 18,
                             color: Color(0xff7c7878),
                           ),
                           filled: true,
                           fillColor: const Color(0x00ffffff),
                           isDense: false,
                           contentPadding: const EdgeInsets.all(0),
-                          suffixIcon: const Icon(Icons.visibility,
+                          suffixIcon: const Icon(Icons.key,
                               color: Color(0xff7b7c82), size: 24),
                         ),
                       ),

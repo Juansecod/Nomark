@@ -51,9 +51,9 @@ class _MenuDisenoState extends State<MenuDiseno> {
         title: const Text(
           "No Mark app",
           style: TextStyle(
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w400,
             fontStyle: FontStyle.normal,
-            fontSize: 18,
+            fontSize: 20,
             color: Color(0xff000000),
           ),
         ),
@@ -66,10 +66,8 @@ class _MenuDisenoState extends State<MenuDiseno> {
               ),
             ),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
-              );
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()));
             },
             child: Center(
                 child: Icon(
@@ -78,7 +76,6 @@ class _MenuDisenoState extends State<MenuDiseno> {
               size: 24,
             ))),
         actions: [
-          const Icon(Icons.favorite_border, color: Color(0xff212435), size: 24),
           Padding(
               padding: const EdgeInsets.fromLTRB(8, 0, 16, 0),
               child: ElevatedButton(
@@ -116,12 +113,6 @@ class _MenuDisenoState extends State<MenuDiseno> {
                 padding: const EdgeInsets.all(0),
                 width: MediaQuery.of(context).size.width,
                 height: 200,
-                decoration: BoxDecoration(
-                  color: const Color(0x1fffffff),
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.zero,
-                  border: Border.all(color: const Color(0x4d9e9e9e), width: 1),
-                ),
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                   child: Image(
@@ -132,8 +123,10 @@ class _MenuDisenoState extends State<MenuDiseno> {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.all(20),
+              Container(
+                alignment: Alignment.center,
+                margin: const EdgeInsets.all(0),
+                padding: const EdgeInsets.all(0),
                 child: Text(
                   "Escoge tu diseño favorito",
                   textAlign: TextAlign.center,
@@ -141,7 +134,7 @@ class _MenuDisenoState extends State<MenuDiseno> {
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontStyle: FontStyle.normal,
-                    fontSize: 20,
+                    fontSize: 28,
                     color: Color(0xff000000),
                   ),
                 ),

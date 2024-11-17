@@ -8,8 +8,7 @@ import 'package:myapp/pantallas/HomeScreen.dart';
 final dio = Dio();
 
 Future<List<dynamic>> getDataUser(String email) async {
-  const String BASE_URL =
-      'https://no-mark-api.azurewebsites.net';
+  const String BASE_URL = 'https://no-mark-api.azurewebsites.net';
   Response response;
   response = await dio.get('${BASE_URL}/shops', data: {
     'userEmail': email,
@@ -40,9 +39,9 @@ class ComprasUsuario extends StatelessWidget {
           title: const Text(
             "No Mark app",
             style: TextStyle(
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w400,
               fontStyle: FontStyle.normal,
-              fontSize: 18,
+              fontSize: 20,
               color: Color(0xff000000),
             ),
           ),
@@ -67,8 +66,6 @@ class ComprasUsuario extends StatelessWidget {
                 size: 24,
               ))),
           actions: [
-            const Icon(Icons.favorite_border,
-                color: Color(0xff212435), size: 24),
             Padding(
                 padding: const EdgeInsets.fromLTRB(8, 0, 16, 0),
                 child: ElevatedButton(
@@ -139,15 +136,31 @@ class ComprasUsuario extends StatelessWidget {
                           ),
                           Center(
                             child: Text(
-                              'Estado pago: ${shops[index]['status']}',
+                              'Estado pago:',
                               textAlign: TextAlign.center,
                               overflow: TextOverflow.clip,
                               style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontStyle: FontStyle.normal,
                                 fontSize: 18,
                                 color: Color.fromARGB(255, 0, 0, 0),
                               ),
+                            ),
+                          ),
+                          Center(
+                            child: Text(
+                              '${shops[index]['status']}',
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.clip,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 18,
+                                  color: (shops[index]['status'] == 'RECHAZADO')
+                                      ? Colors.redAccent
+                                      : ((shops[index]['status'] == 'APROBADO')
+                                          ? Colors.green
+                                          : Colors.orangeAccent)),
                             ),
                           ),
                           Center(
@@ -157,7 +170,7 @@ class ComprasUsuario extends StatelessWidget {
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontStyle: FontStyle.italic,
-                                fontSize: 16,
+                                fontSize: 18,
                                 color: Color.fromARGB(255, 48, 80, 184),
                               ),
                             ),
